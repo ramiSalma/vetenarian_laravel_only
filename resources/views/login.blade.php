@@ -36,11 +36,11 @@
                 <form method="POST" action="{{ route('login.submit') }}" class="space-y-4">
                     @csrf
 
-                    <select name="user_type" required class="w-full bg-gray-800 p-3 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
-                        <option value="" disabled {{ old('user_type') ? '' : 'selected' }}>Select user type</option>
-                        <option value="admin" {{ old('user_type') == 'admin' ? 'selected' : '' }}>Administrator</option>
-                        <option value="veterinarian" {{ old('user_type') == 'veterinarian' ? 'selected' : '' }}>Veterinarian</option>
-                        <option value="client" {{ old('user_type') == 'client' ? 'selected' : '' }}>Client</option>
+                    <select name="user_type" required class="w-full bg-transparent p-3 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                        <option class="bg-purple-500" value="" disabled {{ old('user_type') ? '' : 'selected' }}>Select user type</option>
+                        <option class="bg-purple-500" value="admin" {{ old('user_type') == 'admin' ? 'selected' : '' }}>Administrator</option>
+                        <option class="bg-purple-500" value="veterinarian" {{ old('user_type') == 'veterinarian' ? 'selected' : '' }}>Veterinarian</option>
+                        <option class="bg-purple-500" value="client" {{ old('user_type') == 'client' ? 'selected' : '' }}>Client</option>
                     </select>
 
                     <input
@@ -48,7 +48,7 @@
                         name="email"
                         placeholder="Email"
                         value="{{ old('email') }}"
-                        class="w-full bg-gray-800 p-3 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                        class="w-full bg-transparent p-3 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
                         required
                     >
 
@@ -56,7 +56,7 @@
                         type="password"
                         name="password"
                         placeholder="Password"
-                        class="w-full bg-gray-800 p-3 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
+                        class="w-full bg-transparent p-3 rounded-md text-white focus:outline-none focus:ring-2 focus:ring-purple-500"
                         required
                     >
 
@@ -76,15 +76,15 @@
         </div>
 
         {{-- Welcome Panel --}}
-        <div class="hidden md:flex md:w-1/2 bg-purple-500 items-center justify-center text-white relative">
+        <div class="hidden md:flex md:w-1/2 bg-white items-center justify-center text-white relative">
             <div class="text-center p-8 max-w-md">
-                <h1 class="text-4xl font-bold mb-4">Welcome to<br><span class="text-white">student portal</span></h1>
-                <p class="text-sm">Login to access your account</p>
+                <h1 class="text-4xl text-purple-950 font-bold mb-4">Welcome to<br>student portal</h1>
+                <p class="text-sm text-purple-950">Login to access your account</p>
             </div>
             <img
-                src="{{ asset('assets/student-illustration.png') }}"
+                src="https://t4.ftcdn.net/jpg/00/40/41/59/240_F_40415982_v0Z17uaeDwEYIPouQzinlYbrggnbgPMS.jpg"
                 alt="Illustration"
-                class="absolute bottom-0 right-0 w-1/2"
+                class="absolute bottom-0 right-0 w-3/4"
             >
         </div>
     </div>

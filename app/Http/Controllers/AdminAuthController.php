@@ -23,7 +23,8 @@ class AdminAuthController extends Controller
 
         if (Auth::guard('admin')->attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended(route('admin.dashboard'));
+            // Redirect directly to dogs index instead of dashboard
+            return redirect()->route('admin.dogs.index');
         }
 
         return back()->withErrors([
@@ -40,6 +41,7 @@ class AdminAuthController extends Controller
         return redirect('/admin/login');
     }
 }
+
 
 
 

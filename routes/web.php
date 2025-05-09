@@ -23,9 +23,9 @@ Route::get('/adoption', function () {
 
 // Admin routes - all using consistent 'admin.' prefix
 Route::prefix('admin')->name('admin.')->middleware(['auth:admin'])->group(function () {
-    // Dashboard
+    // Redirect dashboard to dogs index
     Route::get('/dashboard', function () {
-        return view('ADMIN.dashboard');
+        return redirect()->route('admin.dogs.index');
     })->name('dashboard');
     
     // Dogs management
@@ -58,5 +58,6 @@ Route::middleware(['auth:veterinarian'])->prefix('veterinarian')->name('vet.')->
 
 // Public appointment routes
 Route::resource('appointment', AppointmentController::class);    
+
 
 
