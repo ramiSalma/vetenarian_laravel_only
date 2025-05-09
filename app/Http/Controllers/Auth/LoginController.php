@@ -29,7 +29,7 @@ class LoginController extends Controller
             return redirect()->intended("/$guard/dashboard");
         }
 
-        return back()->withErrors(['email' => 'Invalid credentials']);
+        return back()->withErrors(['email' => 'Invalid login or password']);
     }
 
     public function logout(Request $request)
@@ -46,3 +46,5 @@ class LoginController extends Controller
         return redirect('/login');
     }
 }
+
+

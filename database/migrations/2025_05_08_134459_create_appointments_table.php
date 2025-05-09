@@ -6,26 +6,35 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
     public function up(): void
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('client_id')->constrained()->onDelete('cascade');
             $table->foreignId('veterinarian_id')->constrained()->onDelete('cascade');
-            $table->dateTime('date');
+
+            $table->date('appointment_date'); 
+            $table->time('appointment_time'); 
+
+            $table->string('dog_type')->nullable();    
+            $table->integer('dog_age')->nullable();     
+
+            $table->string('pet_name')->nullable();   
+            $table->string('owner_name')->nullable();   
+            $table->text('concern_notes')->nullable();  
             $table->enum('status', ['pending', 'confirmed', 'cancelled'])->default('pending');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
         Schema::dropIfExists('appointments');
     }
+    
 };
+
+        
+
+
+

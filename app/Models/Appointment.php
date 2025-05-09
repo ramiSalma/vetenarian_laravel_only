@@ -7,15 +7,29 @@ use Illuminate\Database\Eloquent\Model;
 
 class Appointment extends Model
 {
-    /** @use HasFactory<\Database\Factories\AppointmentFactory> */
     use HasFactory;
-    protected $fillable = ['client_id', 'veterinarian_id', 'date', 'status'];
-
-    public function client() {
+    
+    protected $fillable = [
+        'client_id',
+        'veterinarian_id',
+        'pet_name',
+        'owner_name',
+        'appointment_date',
+        'appointment_time',
+        'concern_notes',
+        'dog_type',
+        'dog_age',
+        'status'
+    ];
+    
+    public function client()
+    {
         return $this->belongsTo(Client::class);
     }
-
-    public function veterinarian() {
+    
+    public function veterinarian()
+    {
         return $this->belongsTo(Veterinarian::class);
     }
 }
+

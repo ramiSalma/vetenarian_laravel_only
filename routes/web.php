@@ -1,40 +1,62 @@
 <?php
 
+use App\Http\Controllers\DogController;
 use App\Http\Controllers\AdminAuthController;
+use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\AdminAppointmentController;
+use App\Http\Controllers\AdminAdoptionController;
 use Illuminate\Support\Facades\Route;
-
-Route::get('/', function () {
-    return view('welcome');
-});
-// Route::get('/admin',function(){
-//     return view('admin');
-// });
-
-// Route::get('/admin/login', [AdminAuthController::class, 'showLoginForm'])->name('admin.login');
-// Route::post('/admin/login', [AdminAuthController::class, 'login']);
-// Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
-
-// // Protected admin route (dashboard)
-// Route::middleware(['auth:admin'])->group(function () {
-//     Route::get('/admin/dashboard', function () {
-//         return view('admin'); // create this view
-//     });
-// });
-
 use App\Http\Controllers\Auth\LoginController;
+
+// Public routes
+Route::get('/', function () {
+    return view('dashboard');
+});
 
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login'])->name('login.submit');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::middleware('auth:admin')->get('/admin/dashboard', function () {
-    return view('admin');
+Route::get('/adoption', function () {
+    return view('adoption');
+})->name('adoption');
+
+// Admin routes - all using consistent 'admin.' prefix
+Route::prefix('admin')->name('admin.')->middleware(['auth:admin'])->group(function () {
+    // Dashboard
+    Route::get('/dashboard', function () {
+        return view('ADMIN.dashboard');
+    })->name('dashboard');
+    
+    // Dogs management
+    Route::resource('dogs', DogController::class);
+    
+    // Adoptions management
+    Route::resource('adoptions', AdminAdoptionController::class);
+    Route::patch('adoptions/{adoption}/approve', [AdminAdoptionController::class, 'approve'])->name('adoptions.approve');
+    Route::patch('adoptions/{adoption}/reject', [AdminAdoptionController::class, 'reject'])->name('adoptions.reject');
+    
+    // Appointments management
+    Route::resource('appointments', AdminAppointmentController::class);
 });
 
-Route::middleware('auth:veterinarian')->get('/veterinarian/dashboard', function () {
-    return view('veterinarian');
+// Client routes
+Route::middleware('auth:client')->prefix('client')->name('client.')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+    
+    // Client appointments
+    Route::resource('appointments', AppointmentController::class);
 });
 
-Route::middleware('auth:client')->get('/client/dashboard', function () {
-    return view('client');
+// Veterinarian routes
+Route::middleware(['auth:veterinarian'])->prefix('veterinarian')->name('vet.')->group(function () {
+    Route::get('/dashboard', [AppointmentController::class, 'index'])->name('dashboard');
+    Route::post('/appointments/{appointment}/status', [AppointmentController::class, 'updateStatus'])->name('appointments.updateStatus');
 });
+
+// Public appointment routes
+Route::resource('appointment', AppointmentController::class);    
+
+
