@@ -16,7 +16,7 @@ class AppointmentController extends Controller
     {
         $appointments = Appointment::where('veterinarian_id', Auth::id())
             ->whereIn('status', ['pending', 'confirmed']) // Only relevant ones
-            ->orderBy('date')
+            ->orderBy('appointment_date')
             ->get();
 
         return view('VETERINARIAN.dashboard', compact('appointments'));
@@ -145,3 +145,4 @@ class AppointmentController extends Controller
         return view('client.appointments.index', compact('appointments'));
     }
 }
+

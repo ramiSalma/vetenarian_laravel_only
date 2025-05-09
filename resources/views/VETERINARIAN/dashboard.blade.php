@@ -43,15 +43,10 @@
                     <td class="py-3 px-4">
                         @if ($appointment->status === 'pending')
                             <div class="flex space-x-2">
-                                <form action="{{ route('veterinarian.appointments.updateStatus', $appointment) }}" method="POST">
+                                <form action="{{ route('vet.appointments.updateStatus', $appointment) }}" method="POST">
                                     @csrf
                                     <input type="hidden" name="status" value="confirmed">
                                     <button type="submit" class="px-3 py-1 bg-green-600 text-white text-sm rounded hover:bg-green-700">Confirm</button>
-                                </form>
-                                <form action="{{ route('veterinarian.appointments.updateStatus', $appointment) }}" method="POST">
-                                    @csrf
-                                    <input type="hidden" name="status" value="cancelled">
-                                    <button type="submit" class="px-3 py-1 bg-red-600 text-white text-sm rounded hover:bg-red-700">Reject</button>
                                 </form>
                             </div>
                         @else
