@@ -44,23 +44,24 @@ class AppointmentController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Show the form for creating a new appointment for clients
      */
     public function create()
     {
         $veterinarians = Veterinarian::all();
-        return view('appointment', compact('veterinarians'));
+        
+        if (Auth::guard('client')->check()) {
+            return view('CLIENT.appointments.create', compact('veterinarians'));
+        } else {
+            return view('appointment', compact('veterinarians'));
+        }
     }
 
-    // Store a newly created appointment in storage
+    /**
+     * Store a newly created appointment in storage.
+     */
     public function store(Request $request)
     {
-        // Ensure the client is authenticated
-        if (Auth::check() && Auth::user()->role !== 'client') {
-            return redirect()->route('login')->with('error', 'Only clients can book an appointment.');
-        }
-        
-
         // Validate the incoming data
         $request->validate([
             'pet_name' => 'required|string|max:255',
@@ -70,13 +71,13 @@ class AppointmentController extends Controller
             'concern_notes' => 'nullable|string',
             'dog_type' => 'nullable|string|max:255',
             'dog_age' => 'nullable|integer',
-            'veterinarian_id' => 'required|exists:veterinarians,id', // Ensure the veterinarian exists
+            'veterinarian_id' => 'required|exists:veterinarians,id',
         ]);
 
         // Create the appointment
         Appointment::create([
-            'client_id' => Auth::id(), // Store the authenticated client's ID
-            'veterinarian_id' => $request->veterinarian_id, // Store the selected veterinarian
+            'client_id' => Auth::guard('client')->id(),
+            'veterinarian_id' => $request->veterinarian_id,
             'pet_name' => $request->pet_name,
             'owner_name' => $request->owner_name,
             'appointment_date' => $request->appointment_date,
@@ -84,10 +85,16 @@ class AppointmentController extends Controller
             'concern_notes' => $request->concern_notes,
             'dog_type' => $request->dog_type,
             'dog_age' => $request->dog_age,
-            'status' => 'pending', // Default status
+            'status' => 'pending',
         ]);
 
-        return redirect()->route('appointments.index')->with('success', 'Appointment successfully reserved.');
+        if (Auth::guard('client')->check()) {
+            return redirect()->route('client.appointments.index')
+                ->with('success', 'Appointment successfully reserved.');
+        } else {
+            return redirect()->route('home')
+                ->with('success', 'Appointment successfully reserved.');
+        }
     }
 
 
@@ -145,4 +152,7 @@ class AppointmentController extends Controller
         return view('client.appointments.index', compact('appointments'));
     }
 }
+
+
+
 

@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminAppointmentController;
 use App\Http\Controllers\AdminAdoptionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\ClientAdoptionController;
 
 // Public routes
 Route::get('/', function () {
@@ -47,7 +48,18 @@ Route::middleware('auth:client')->prefix('client')->name('client.')->group(funct
     })->name('dashboard');
     
     // Client appointments
-    Route::resource('appointments', AppointmentController::class);
+    Route::get('/appointments', [AppointmentController::class, 'clientAppointments'])->name('appointments.index');
+    Route::get('/appointments/create', [AppointmentController::class, 'create'])->name('appointments.create');
+    Route::post('/appointments', [AppointmentController::class, 'store'])->name('appointments.store');
+    
+    // Client adoptions
+    Route::get('/adoptions', [ClientAdoptionController::class, 'index'])->name('adoptions.index');
+    Route::get('/adoptions/create', [ClientAdoptionController::class, 'create'])->name('adoptions.create');
+    Route::post('/adoptions', [ClientAdoptionController::class, 'store'])->name('adoptions.store');
+    Route::delete('/adoptions/{adoption}/cancel', [ClientAdoptionController::class, 'cancel'])->name('adoptions.cancel');
+    
+    // Available dogs for adoption
+    Route::get('/dogs', [DogController::class, 'clientIndex'])->name('dogs.index');
 });
 
 // Veterinarian routes
@@ -58,6 +70,10 @@ Route::middleware(['auth:veterinarian'])->prefix('veterinarian')->name('vet.')->
 
 // Public appointment routes
 Route::resource('appointment', AppointmentController::class);    
+
+
+
+
 
 
 

@@ -130,7 +130,17 @@ class DogController extends Controller
         return redirect()->route('ADMIN.dashboard')
             ->with('success', 'Dog deleted successfully!');
     }
+
+    /**
+     * Display a listing of available dogs for clients
+     */
+    public function clientIndex()
+    {
+        $dogs = Dog::where('status', 'available')->get();
+        return view('CLIENT.dogs.index', compact('dogs'));
+    }
 }
+
 
 
 
