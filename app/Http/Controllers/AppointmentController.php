@@ -144,14 +144,16 @@ class AppointmentController extends Controller
      */
     public function clientAppointments()
     {
-        $appointments = Appointment::where('client_id', Auth::id())
+        $appointments = Appointment::where('client_id', Auth::guard('client')->id())
             ->orderBy('appointment_date')
             ->orderBy('appointment_time')
             ->get();
 
-        return view('client.appointments.index', compact('appointments'));
+        return view('CLIENT.appointments.index', compact('appointments'));
     }
 }
+
+
 
 
 

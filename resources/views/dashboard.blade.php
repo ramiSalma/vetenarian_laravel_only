@@ -12,10 +12,13 @@
     
     @php
     $isAdmin = Auth::guard('admin')->check();
+    $isClient = Auth::guard('client')->check();
     @endphp
     
     @if($isAdmin)
         <x-admin-navbar />
+    @elseif($isClient)
+        <x-client-navbar />
     @endif
     
     @yield('content')
@@ -30,5 +33,6 @@
     <x-footer />
 </body>
 </html>
+
 
 

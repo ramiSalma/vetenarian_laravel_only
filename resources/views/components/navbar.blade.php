@@ -4,7 +4,7 @@
      x-init="window.addEventListener('scroll', () => { isScrolled = window.scrollY > 0 })">
     
     <div class="w-full md:w-auto flex justify-between items-center">
-        <a href="#" 
+        <a href="{{ url('/') }}" 
            class="text-2xl font-bold flex items-center gap-2"
            :class="{ 'text-white': isScrolled, 'text-purple-950': !isScrolled }">
             
@@ -37,21 +37,21 @@
                 </a>
             </li>
             <li class="w-full md:w-auto text-center">
-                <a href="#services"
+                <a href="{{ url('/#services') }}"
                    class="block py-2 md:py-0"
                    :class="{ 'text-white': isScrolled, 'text-purple-950': !isScrolled }">
                     Services
                 </a>
             </li>
             <li class="w-full md:w-auto text-center">
-                <a href="#training"
+                <a href="{{ url('/#training') }}"
                    class="block py-2 md:py-0"
                    :class="{ 'text-white': isScrolled, 'text-purple-950': !isScrolled }">
                     Training
                 </a>
             </li>
             <li class="w-full md:w-auto text-center">
-                <a href="#medcare"
+                <a href="{{ url('/#medcare') }}"
                    class="block py-2 md:py-0"
                    :class="{ 'text-white': isScrolled, 'text-purple-950': !isScrolled }">
                     Med Care

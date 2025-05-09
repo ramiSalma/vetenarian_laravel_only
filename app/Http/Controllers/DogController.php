@@ -137,9 +137,15 @@ class DogController extends Controller
     public function clientIndex()
     {
         $dogs = Dog::where('status', 'available')->get();
-        return view('CLIENT.dogs.index', compact('dogs'));
+        
+        // Try with lowercase path
+        return view('client.dogs.index', compact('dogs'));
     }
 }
+
+
+
+
 
 
 

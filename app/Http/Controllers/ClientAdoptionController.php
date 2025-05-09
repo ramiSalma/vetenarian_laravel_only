@@ -27,11 +27,17 @@ class ClientAdoptionController extends Controller
      */
     public function create(Request $request)
     {
+        // Make sure dog_id is provided
+        if (!$request->has('dog_id')) {
+            return redirect()->route('client.dogs.index')
+                ->with('error', 'Please select a dog to adopt.');
+        }
+        
         $dog = Dog::findOrFail($request->dog_id);
         
         // Check if dog is available
         if ($dog->status !== 'available') {
-            return redirect()->route('adoption')
+            return redirect()->route('client.dogs.index')
                 ->with('error', 'Sorry, this dog is no longer available for adoption.');
         }
         
@@ -46,7 +52,7 @@ class ClientAdoptionController extends Controller
                 ->with('error', 'You already have a request for this dog.');
         }
         
-        return view('client.adoption-request', compact('dog'));
+        return view('CLIENT.adoption-request', compact('dog'));
     }
     
     /**
@@ -102,3 +108,4 @@ class ClientAdoptionController extends Controller
             ->with('success', 'Your adoption request has been cancelled.');
     }
 }
+

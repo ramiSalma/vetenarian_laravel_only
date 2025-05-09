@@ -29,9 +29,19 @@
   
       <!-- Centered button -->
       <div class="mt-12">
-        <a href="{{ route('adoption') }}" class="bg-purple-950 text-white font-semibold py-2 px-6 rounded-full shadow hover:bg-purple-800 transition">
-          Adopt an Animal
-        </a>
+        @php
+          $isClientLoggedIn = Auth::guard('client')->check();
+        @endphp
+        
+        @if($isClientLoggedIn)
+          <a href="{{ route('client.dogs.index') }}" class="bg-purple-950 text-white font-semibold py-2 px-6 rounded-full shadow hover:bg-purple-800 transition">
+            Adopt an Animal
+          </a>
+        @else
+          <a href="{{ route('login') }}" class="bg-purple-950 text-white font-semibold py-2 px-6 rounded-full shadow hover:bg-purple-800 transition">
+            Adopt an Animal
+          </a>
+        @endif
       </div>
     </div>
   </section>

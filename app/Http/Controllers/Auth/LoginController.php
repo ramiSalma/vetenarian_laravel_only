@@ -45,6 +45,23 @@ class LoginController extends Controller
 
         return redirect('/login');
     }
+
+    /**
+     * Where to redirect users after login based on their guard.
+     */
+    protected function redirectTo()
+    {
+        if (Auth::guard('admin')->check()) {
+            return route('admin.dashboard');
+        } elseif (Auth::guard('veterinarian')->check()) {
+            return route('vet.dashboard');
+        } elseif (Auth::guard('client')->check()) {
+            return route('client.appointments.index');
+        }
+        
+        return '/';
+    }
 }
+
 
 

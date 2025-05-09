@@ -24,13 +24,25 @@
       Dedicated and loving home care, now from certified pet experts. Your pet's happiness is our top priority.
     </p>
     <div class="flex justify-center gap-4 mb-6">
-      <a href="{{ route('appointment.create') }}" class="bg-purple-950 text-white px-6 py-3 rounded-[10px]">
-        Request an Appointment
-      </a>
-
-      <a href="{{ route('adoption') }}" class="text-purple-950 px-6 py-3 adopt text-xl font-bold">
-        Adopt an Animal
-      </a>
+      @php
+        $isClientLoggedIn = Auth::guard('client')->check();
+      @endphp
+      
+      @if($isClientLoggedIn)
+        <a href="{{ route('client.appointments.create') }}" class="bg-purple-950 text-white px-6 py-3 rounded-[10px]">
+          Request an Appointment
+        </a>
+        <a href="{{ route('client.dogs.index') }}" class="text-purple-950 px-6 py-3 adopt text-xl font-bold">
+          Adopt an Animal
+        </a>
+      @else
+        <a href="{{ route('login') }}" class="bg-purple-950 text-white px-6 py-3 rounded-[10px]">
+          Request an Appointment
+        </a>
+        <a href="{{ route('login') }}" class="text-purple-950 px-6 py-3 adopt text-xl font-bold">
+          Adopt an Animal
+        </a>
+      @endif
     </div>
   </div>
 </section>

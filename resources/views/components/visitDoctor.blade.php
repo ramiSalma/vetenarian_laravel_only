@@ -61,9 +61,19 @@
       </div>
   
       <div class="mt-20">
-        <a href="/appointment" class="px-6 py-3 mb-[10px] -mt-30 bg-purple-950 hover:bg-purple-600 text-white rounded-full text-sm font-semibold shadow-md transition">
-          Request an Appointment
-        </a>
+        @php
+          $isClientLoggedIn = Auth::guard('client')->check();
+        @endphp
+        
+        @if($isClientLoggedIn)
+          <a href="{{ route('client.appointments.create') }}" class="px-6 py-3 mb-[10px] -mt-30 bg-purple-950 hover:bg-purple-600 text-white rounded-full text-sm font-semibold shadow-md transition">
+            Request an Appointment
+          </a>
+        @else
+          <a href="{{ route('login') }}" class="px-6 py-3 mb-[10px] -mt-30 bg-purple-950 hover:bg-purple-600 text-white rounded-full text-sm font-semibold shadow-md transition">
+            Request an Appointment
+          </a>
+        @endif
       </div>
     </div>
   </section>

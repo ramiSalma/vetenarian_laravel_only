@@ -7,7 +7,7 @@
     <div class="max-w-2xl mx-auto">
         <div class="flex items-center justify-between mb-6">
             <h1 class="text-2xl font-bold text-purple-800">Request to Adopt {{ $dog->name }}</h1>
-            <a href="{{ route('adoption') }}" class="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-md transition-colors">
+            <a href="{{ route('client.dogs.index') }}" class="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-md transition-colors">
                 <i class="fas fa-arrow-left mr-1"></i>Back to Dogs
             </a>
         </div>
@@ -28,11 +28,6 @@
                         <h2 class="text-xl font-bold text-purple-800 mb-2">{{ $dog->name }}</h2>
                         <p class="text-gray-600 mb-1"><span class="font-medium">Type:</span> {{ $dog->type }}</p>
                         <p class="text-gray-600 mb-1"><span class="font-medium">Age:</span> {{ $dog->age }} {{ $dog->age == 1 ? 'year' : 'years' }}</p>
-                        <p class="text-gray-600 mb-4"><span class="font-medium">Status:</span> 
-                            <span class="inline-block px-2 py-1 text-xs font-semibold rounded-full bg-green-500 text-white">
-                                Available
-                            </span>
-                        </p>
                     </div>
                 </div>
                 

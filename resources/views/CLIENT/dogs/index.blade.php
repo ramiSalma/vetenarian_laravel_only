@@ -22,7 +22,7 @@
                 <p class="text-gray-600">{{ $dog->type }}, {{ $dog->age }} {{ $dog->age == 1 ? 'year' : 'years' }} old</p>
                 
                 <div class="mt-4">
-                    <a href="{{ route('client.adoptions.create', ['dog_id' => $dog->id]) }}" 
+                    <a href="{{ route('client.adoptions.create') }}?dog_id={{ $dog->id }}" 
                        class="inline-block bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-md transition-colors">
                         Request Adoption
                     </a>
@@ -33,3 +33,5 @@
     </div>
 </div>
 @endsection
+
+
