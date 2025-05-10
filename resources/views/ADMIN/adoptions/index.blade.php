@@ -117,12 +117,6 @@
                             </td>
                             <td class="py-3 px-4">
                                 <div class="flex space-x-2">
-                                    <a href="{{ route('admin.adoptions.show', $adoption) }}" class="text-blue-500 hover:text-blue-700 transition-colors">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                    <a href="{{ route('admin.adoptions.edit', $adoption) }}" class="text-yellow-500 hover:text-yellow-700 transition-colors">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
                                     @if($adoption->status === 'pending')
                                         <form action="{{ route('admin.adoptions.approve', $adoption) }}" method="POST" class="inline">
                                             @csrf
@@ -145,7 +139,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="text-red-500 hover:text-red-700 transition-colors" 
-                                            onclick="return confirm('Are you sure you want to delete this adoption record? This action cannot be undone.')">
+                                            onclick="return confirm('Are you sure you want to delete this adoption record?')">
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </form>
@@ -164,5 +158,6 @@
     </div>
 </div>
 @endsection
+
 
 

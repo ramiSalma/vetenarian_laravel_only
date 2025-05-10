@@ -10,7 +10,7 @@
                 <h4 class="text-xl font-bold"><i class="fas fa-edit mr-2"></i>Edit Dog: {{ $dog->name }}</h4>
             </div>
             <div class="p-6">
-                <form action="{{ route('ADMIN.update', $dog) }}" class="grid grid-cols-2 gap-2" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.dogs.update', $dog) }}" class="grid grid-cols-2 gap-2" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     
@@ -70,7 +70,7 @@
                     </div>
                    <br>
                     <div class="flex justify-between mt-6">
-                        <a href="{{ route('ADMIN.dashboard') }}" class="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-md transition-colors">
+                        <a href="{{ route('admin.dogs.index') }}" class="bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded-md transition-colors">
                             <i class="fas fa-arrow-left mr-1"></i>Back
                         </a>
                         <button type="submit" class="bg-purple-500 hover:bg-purple-600 text-white py-2 px-4 rounded-md transition-colors">

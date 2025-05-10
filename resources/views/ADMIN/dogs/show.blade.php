@@ -86,7 +86,7 @@ use Illuminate\Support\Facades\Storage;
                 <p class="text-lg font-medium mb-2">This dog is currently available for adoption!</p>
                 <p class="text-gray-600 mb-4">If someone is interested in adopting {{ $dog->name }}, they can contact the shelter directly. You can update the status to "adopted" once the dog finds a forever home.</p>
                 
-                <form action="{{ route('ADMIN.update', $dog) }}" method="POST" class="mt-4">
+                <form action="{{ route('admin.dogs.update', $dog) }}" method="POST" class="mt-4">
                     @csrf
                     @method('PUT')
                     <input type="hidden" name="name" value="{{ $dog->name }}">
@@ -110,7 +110,7 @@ use Illuminate\Support\Facades\Storage;
                 <p class="text-lg font-medium mb-2">This dog has already been adopted!</p>
                 <p class="text-gray-600 mb-4">{{ $dog->name }} has found a forever home. If you need to change the status back to available, you can use the form below.</p>
                 
-                <form action="{{ route('ADMIN.update', $dog) }}" method="POST" class="mt-4">
+                <form action="{{ route('admin.dogs.update', $dog) }}" method="POST" class="mt-4">
                     @csrf
                     @method('PUT')
                     <input type="hidden" name="name" value="{{ $dog->name }}">

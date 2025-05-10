@@ -54,7 +54,7 @@ class DogController extends Controller
 
     public function create()
     {
-        return view('ADMIN.create');
+        return view('ADMIN.dogs.create');
     }
 
     public function store(Request $request)
@@ -76,18 +76,18 @@ class DogController extends Controller
 
         Dog::create($data);
         
-        return redirect()->route('ADMIN.dashboard')
+        return redirect()->route('admin.dogs.index')
             ->with('success', 'Dog added successfully!');
     }
 
     public function show(Dog $dog)
     {
-        return view('ADMIN.show', compact('dog'));
+        return view('ADMIN.dogs.show', compact('dog'));
     }
 
     public function edit(Dog $dog)
     {
-        return view('ADMIN.edit', compact('dog'));
+        return view('ADMIN.dogs.edit', compact('dog'));
     }
 
     public function update(Request $request, Dog $dog)
@@ -114,7 +114,7 @@ class DogController extends Controller
 
         $dog->update($data);
 
-        return redirect()->route('ADMIN.dashboard')
+        return redirect()->route('admin.dogs.index')
             ->with('success', 'Dog updated successfully!');
     }
 
@@ -127,7 +127,7 @@ class DogController extends Controller
         
         $dog->delete();
 
-        return redirect()->route('ADMIN.dashboard')
+        return redirect()->route('admin.dogs.index')
             ->with('success', 'Dog deleted successfully!');
     }
 
@@ -142,6 +142,7 @@ class DogController extends Controller
         return view('client.dogs.index', compact('dogs'));
     }
 }
+
 
 
 
