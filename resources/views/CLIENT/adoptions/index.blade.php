@@ -6,9 +6,6 @@
 <div class="container mx-auto px-4 py-8 mt-20">
     <div class="flex justify-between items-center mb-6">
         <h1 class="text-2xl font-bold text-purple-800">My Adoption Requests</h1>
-        <a href="{{ route('adoption') }}" class="bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded-md transition-colors">
-            <i class="fas fa-search mr-1"></i>Browse Dogs
-        </a>
     </div>
     
     @if(session('success'))

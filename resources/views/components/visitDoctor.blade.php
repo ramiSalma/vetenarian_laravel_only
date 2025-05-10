@@ -1,4 +1,4 @@
-<section class="bg-white py-10 px-4 md:px-8 lg:px-16 relative">
+<section id="medcare" class="py-16 bg-white">
     <div class="max-w-5xl mx-auto text-center">
       <h2 class="text-3xl md:text-4xl font-bold mb-4 text-purple-950">Veterinary Services</h2>
       <p class="text-gray-500 text-purple-500 max-w-xl mx-auto mb-12">

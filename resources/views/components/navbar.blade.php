@@ -58,10 +58,10 @@
                 </a>
             </li>
             <li class="w-full md:w-auto text-center">
-                <a href="{{ route('adoption') }}"
+                <a href="{{ url('/#about') }}"
                    class="block py-2 md:py-0"
                    :class="{ 'text-white': isScrolled, 'text-purple-950': !isScrolled }">
-                    Adoption
+                    About
                 </a>
             </li>
         </ul>

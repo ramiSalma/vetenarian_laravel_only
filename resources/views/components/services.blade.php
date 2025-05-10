@@ -1,12 +1,12 @@
-<section class="py-16 relative">
+<section id="services" class="py-16 bg-white relative">
     <!-- Paw Print Background -->
-    <div class="absolute bg-gray-950 inset-0 bg-[url('https://media.istockphoto.com/id/1457493367/vector/pet-paw-seamless-pattern-vector-illustration-with-cat-or-dog-paw-on-purple-background.jpg?s=612x612&w=0&k=20&c=K8z84mTmt5chOaJDHvYe3_UF7eXj1ESxsz1Yxg3MCpI=')] opacity-15 bg-repeat z-0"></div>
+    <div class="absolute inset-0 bg-[url('https://media.istockphoto.com/id/1457493367/vector/pet-paw-seamless-pattern-vector-illustration-with-cat-or-dog-paw-on-purple-background.jpg?s=612x612&w=0&k=20&c=K8z84mTmt5chOaJDHvYe3_UF7eXj1ESxsz1Yxg3MCpI=')] bg-repeat opacity-10 z-0"></div>
   
     <div class="container mx-auto px-4 relative z-10 text-center">
-      <h2 class="text-3xl md:text-4xl text-purple-950 font-bold mb-4">Our Services</h2>
-      <p class="text-gray-600 text-purple-500 max-w-xl mx-auto mb-12">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.
-      </p>
+        <h2 class="text-3xl md:text-4xl text-purple-950 font-bold mb-4">Our Services</h2>
+        <p class="text-gray-600 text-purple-500 max-w-xl mx-auto mb-12">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.
+        </p>
   
       <div class="flex justify-around px-[100px]">
         <!-- Service 1 -->

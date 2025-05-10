@@ -1,4 +1,4 @@
-<section class="bg-purple-300 flex h-[600px] flex-col md:flex-row items-center p-10 gap-8">
+<section id="about" class="bg-purple-300 flex h-[600px] flex-col md:flex-row items-center p-10 gap-8">
     <!-- Image on left -->
     <div class="md:w-1/2">
       <img src="{{ asset('images/bg7.png') }}" alt="Woman with Dog" class="rounded-2xl w-[800px]" />

@@ -6,7 +6,7 @@ $features = [
   ['icon' => 'icon6.png', 'title' => 'Best affordable Organic Pet Food'],
 ];
 @endphp
-<section class="relative bg-purple-950 py-24">
+<section id="training" class="relative bg-purple-950 py-24">
     <div class="absolute top-0 left-1/2 -translate-y-1/2 -translate-x-1/2 flex gap-50 z-20">
       @foreach ($features as $feature)
         <div
